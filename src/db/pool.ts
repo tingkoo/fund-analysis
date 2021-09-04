@@ -11,6 +11,6 @@ function connect() {
     }).promise();
 }
 
-const promistPool = connect();
+const promisePool = connect();
 
-export default promistPool;
+export default promisePool;
