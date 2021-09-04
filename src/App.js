@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            list: [],
+        };
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        let url = 'http://localhost:3000/fund/1';
+        axios
+            .get(url)
+            .then(res => {
+                let data = res.data;
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.handleClick}>Test API</button>
+            </div>
+        );
+    }
 }
+
+// function App() {
+//     return (
+
+//     );
+// }
 
 export default App;
